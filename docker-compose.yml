@@ -1,0 +1,56 @@
+﻿services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: stamplab_db
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: laspira�as
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend/NUEVA BD_STAMPLAB
+    image: stamplab-backend:1.0
+    container_name: node_backend
+    restart: always
+    env_file:
+      - ./backend/NUEVA BD_STAMPLAB/.env
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend/NUEVA BD_STAMPLAB:/app
+      - /app/node_modules
+    networks:
+      - app-network
+    command: sh -c "npx sequelize-cli db:migrate && npm run dev"
+
+  frontend:
+    build: ./frontend/StampLab_Template
+    image: stamplab-frontend:1.0
+    container_name: react_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/StampLab_Template:/app
+      - /app/node_modules
+    networks:
+      - app-network
+    environment:
+      - VITE_API_URL=http://localhost:3000
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
