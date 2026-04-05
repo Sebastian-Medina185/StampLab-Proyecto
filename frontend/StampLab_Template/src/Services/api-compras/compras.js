@@ -117,14 +117,14 @@ export const deleteCompra = async (id) => {
 // Obtener todos los proveedores (para el dropdown)
 export const getProveedores = async () => {
     try {
-        const response = await axios.get("http://localhost:3000/api/proveedores");
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/proveedores`);
         console.log("Preedores obtenidos:", response.data);
         return response.data;
     } catch (error) {
         console.error("Error completo al obtener proveedores:", error);
         console.error("Respuesta del servidor (completa):", JSON.stringify(error.response?.data, null, 2));
         console.error("Status:", error.response?.status);
-        console.error("URL intentada:", "http://localhost:3000/api/proveedores");
+        console.error("URL intentada:", `${import.meta.env.VITE_API_URL}/api/proveedores`);
 
         const errorMessage = error.response?.data?.message ||
             error.response?.data?.mensaje ||

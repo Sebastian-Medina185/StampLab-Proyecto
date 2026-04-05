@@ -39,7 +39,7 @@ const RecuperarContraseña = () => {
         setLoading(true);
         setMensaje({ tipo: "", texto: "" });
         try {
-            await axios.post("http://localhost:3000/api/recuperar-password", { Correo: correo });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/recuperar-password`, { Correo: correo });
             setEnviado(true);
             setMensaje({ tipo: "success", texto: "Si el correo está registrado, te enviaremos un enlace de recuperación." });
             setCorreo("");

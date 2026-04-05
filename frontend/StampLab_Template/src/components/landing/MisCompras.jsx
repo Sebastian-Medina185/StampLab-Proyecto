@@ -199,7 +199,7 @@ const MisCompras = () => {
 
     const cargarVentas = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/ventas");
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ventas`);
             const data = await response.json();
 
             // ✅ FIX: Mostrar TODAS las ventas del usuario (con y sin MetodoPago)

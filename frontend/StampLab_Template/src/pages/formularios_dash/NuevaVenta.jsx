@@ -105,7 +105,7 @@ export default function NuevaVenta({ onClose, ventaEdit }) {
 
         const fetchUsuarios = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/usuarios", {
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/usuarios`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setUsuarios(res.data);
@@ -114,7 +114,7 @@ export default function NuevaVenta({ onClose, ventaEdit }) {
 
         const fetchProductos = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/api/productos", {
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/productos`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setProductos(res.data.datos || []);
@@ -364,7 +364,7 @@ export default function NuevaVenta({ onClose, ventaEdit }) {
                     confirmButtonColor: C.success,
                 });
             } else {
-                const response = await axios.post("http://localhost:3000/api/ventas", venta, {
+                const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/ventas`, venta, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const ventaCreada = response.data?.venta || response.data;

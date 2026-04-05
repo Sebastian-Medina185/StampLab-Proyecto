@@ -74,7 +74,7 @@ const RestablecerContraseña = () => {
         setLoading(true);
         setMensaje({ tipo: "", texto: "" });
         try {
-            await axios.post("http://localhost:3000/api/restablecer-password", { token, nuevaContraseña });
+            await axios.post(`${import.meta.env.VITE_API_URL}/api/restablecer-password`, { token, nuevaContraseña });
             await Swal.fire({ icon: "success", title: "¡Contraseña actualizada!", text: "Tu contraseña ha sido restablecida correctamente. Ya puedes iniciar sesión.", confirmButtonColor: C.navy });
             navigate("/login");
         } catch (error) {

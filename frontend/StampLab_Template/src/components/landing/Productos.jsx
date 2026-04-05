@@ -448,7 +448,7 @@ const PaymentModal = ({ open, onClose, cart, onSuccess }) => {
                 } : {}),
             };
 
-            const res = await fetch("http://localhost:3000/api/ventas", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/ventas`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
