@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/tecnicas";
+import API_BASE from "../../config/api";
+const API_URL = `${API_BASE}/api/tecnicas`;
+
 
 export const getAllTecnicas = async () => {
   try {

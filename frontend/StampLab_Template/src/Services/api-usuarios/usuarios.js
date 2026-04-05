@@ -2,7 +2,9 @@
 
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/usuarios"; 
+import API_BASE from "../../config/api";
+const API_URL = `${API_BASE}/api/usuarios`;
+
 
 // Configurar el token en los headers
 const getAuthHeaders = () => {

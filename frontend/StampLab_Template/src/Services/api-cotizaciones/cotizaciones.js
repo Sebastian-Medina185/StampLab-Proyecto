@@ -1,7 +1,9 @@
 // Services/api-cotizaciones/cotizaciones.js
 
 import axios from "axios";
-const API_URL = "http://localhost:3000/api/cotizaciones";
+import API_BASE from "../../config/api";
+const API_URL = `${API_BASE}/api/cotizaciones`;
+
 
 // Obtener todas las cotizaciones (admin)
 export const getCotizaciones = async (params = {}) => {

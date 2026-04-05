@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaPlusCircle, FaEye, FaEdit, FaTrash, FaSyncAlt, FaImage, FaBoxOpen } from "react-icons/fa";
 import Swal from "sweetalert2";
 import TecnicasForm from "../pages/formularios_dash/TecnicasForm";
-import { getAllTecnicas, createTecnica, updateTecnica, deleteTecnica } from "../services/api-tecnicas/tecnicas";
+import { getAllTecnicas, createTecnica, updateTecnica, deleteTecnica } from "../Services/api-tecnicas/tecnicas";
 
 /* ── Tokens (mismos que AgregarProducto) ── */
 const C = {
@@ -298,10 +298,15 @@ const Tecnicas = () => {
                                         </td>
                                         <td style={{ padding: "11px 14px" }}>
                                             {t.imagenTecnica
-                                                ? <button className="icon-btn" onClick={() => { setSelectedTecnica(t); setShowImageModal(true); }}
-                                                    style={{ background: C.accentSoft, color: C.accent, border: `1.5px solid ${C.accentBorder}`, borderRadius: 8, padding: "5px 12px", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "'Outfit',sans-serif", display: "flex", alignItems: "center", gap: 5 }}>
-                                                    <FaImage size={11} /> Ver imagen
-                                                </button>
+                                                ? <img
+                                                    src={t.imagenTecnica}
+                                                    alt={t.Nombre}
+                                                    onClick={() => { setSelectedTecnica(t); setShowImageModal(true); }}
+                                                    style={{ width: 52, height: 52, objectFit: "cover", borderRadius: 10, border: `2px solid ${C.border}`, cursor: "pointer", transition: "transform 0.2s, box-shadow 0.2s" }}
+                                                    onMouseEnter={e => { e.target.style.transform = "scale(1.1)"; e.target.style.boxShadow = "0 4px 12px rgba(0,0,0,0.18)"; }}
+                                                    onMouseLeave={e => { e.target.style.transform = "none"; e.target.style.boxShadow = "none"; }}
+                                                    onError={e => { e.target.style.display = "none"; }}
+                                                />
                                                 : <Badge type="muted">Sin imagen</Badge>
                                             }
                                         </td>

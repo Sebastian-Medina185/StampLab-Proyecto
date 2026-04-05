@@ -79,11 +79,11 @@ const Badge = ({ type, children }) => {
     const map = {
         success: { bg: C.successSoft, color: C.success, border: C.successBorder },
         warning: { bg: C.warningSoft, color: C.warning, border: "#fde68a" },
-        danger:  { bg: C.dangerSoft,  color: C.danger,  border: "#fecaca"  },
-        accent:  { bg: C.accentSoft,  color: C.accent,  border: C.accentBorder },
-        navy:    { bg: C.navy,        color: "#fff",     border: C.navy     },
-        purple:  { bg: C.purpleSoft,  color: C.purple,  border: C.purpleBorder },
-        muted:   { bg: "#f1f5f9",     color: C.muted,   border: C.border   },
+        danger: { bg: C.dangerSoft, color: C.danger, border: "#fecaca" },
+        accent: { bg: C.accentSoft, color: C.accent, border: C.accentBorder },
+        navy: { bg: C.navy, color: "#fff", border: C.navy },
+        purple: { bg: C.purpleSoft, color: C.purple, border: C.purpleBorder },
+        muted: { bg: "#f1f5f9", color: C.muted, border: C.border },
     };
     const s = map[type] || map.muted;
     return (
@@ -111,13 +111,13 @@ const Card = ({ children, style: sx }) => (
 
 const Btn = ({ variant = "primary", children, style: sx, ...props }) => {
     const variants = {
-        primary:          { background: C.navy,    color: "#fff",  border: "none" },
-        secondary:        { background: "#f1f5f9", color: C.muted, border: "none" },
-        success:          { background: C.success, color: "#fff",  border: "none" },
-        danger:           { background: C.danger,  color: "#fff",  border: "none" },
-        warning:          { background: C.warning, color: "#fff",  border: "none" },
-        purple:           { background: C.purple,  color: "#fff",  border: "none" },
-        outline:          { background: "transparent", color: C.navy,   border: `1.5px solid ${C.navy}`   },
+        primary: { background: C.navy, color: "#fff", border: "none" },
+        secondary: { background: "#f1f5f9", color: C.muted, border: "none" },
+        success: { background: C.success, color: "#fff", border: "none" },
+        danger: { background: C.danger, color: "#fff", border: "none" },
+        warning: { background: C.warning, color: "#fff", border: "none" },
+        purple: { background: C.purple, color: "#fff", border: "none" },
+        outline: { background: "transparent", color: C.navy, border: `1.5px solid ${C.navy}` },
         "outline-danger": { background: "transparent", color: C.danger, border: `1.5px solid ${C.danger}` },
         "outline-accent": { background: "transparent", color: C.accent, border: `1.5px solid ${C.accent}` },
     };
@@ -145,10 +145,10 @@ const Btn = ({ variant = "primary", children, style: sx, ...props }) => {
      disabled
 ══════════════════════════════════════════════════════════ */
 const SearchableSelect = ({ options = [], value, onChange, placeholder = "Buscar...", disabled = false }) => {
-    const [open, setOpen]   = useState(false);
+    const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
-    const containerRef      = useRef(null);
-    const inputRef          = useRef(null);
+    const containerRef = useRef(null);
+    const inputRef = useRef(null);
 
     useEffect(() => {
         const handler = (e) => {
@@ -301,13 +301,13 @@ const SearchableSelect = ({ options = [], value, onChange, placeholder = "Buscar
    COMPONENTE PRINCIPAL
 ══════════════════════════════════════════════════════════ */
 const FormularioCotizacion = ({ onClose, onActualizar }) => {
-    const [usuarios, setUsuarios]   = useState([]);
+    const [usuarios, setUsuarios] = useState([]);
     const [productos, setProductos] = useState([]);
-    const [colores, setColores]     = useState([]);
-    const [tallas, setTallas]       = useState([]);
-    const [telas, setTelas]         = useState([]);
-    const [tecnicas, setTecnicas]   = useState([]);
-    const [partes, setPartes]       = useState([]);
+    const [colores, setColores] = useState([]);
+    const [tallas, setTallas] = useState([]);
+    const [telas, setTelas] = useState([]);
+    const [tecnicas, setTecnicas] = useState([]);
+    const [partes, setPartes] = useState([]);
 
     const [documentoID, setDocumentoID] = useState("");
 
@@ -315,31 +315,31 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
     const [productoPersonalizado, setProductoPersonalizado] = useState({ nombre: "", descripcion: "", precioUnitario: 0 });
 
     const [carritoProductos, setCarritoProductos] = useState([]);
-    const [editandoIndex, setEditandoIndex]         = useState(null);
+    const [editandoIndex, setEditandoIndex] = useState(null);
 
-    const [productoSeleccionado, setProductoSeleccionado]   = useState(null);
-    const [variantesDisponibles, setVariantesDisponibles]   = useState([]);
-    const [coloresDisponibles, setColoresDisponibles]       = useState([]);
-    const [tallasDisponibles, setTallasDisponibles]         = useState([]);
-    const [telasDisponibles, setTelasDisponibles]           = useState([]);
-    const [cantidad, setCantidad]     = useState(1);
-    const [colorID, setColorID]       = useState("");
-    const [tallaID, setTallaID]       = useState("");
-    const [telaID, setTelaID]         = useState("");
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+    const [variantesDisponibles, setVariantesDisponibles] = useState([]);
+    const [coloresDisponibles, setColoresDisponibles] = useState([]);
+    const [tallasDisponibles, setTallasDisponibles] = useState([]);
+    const [telasDisponibles, setTelasDisponibles] = useState([]);
+    const [cantidad, setCantidad] = useState(1);
+    const [colorID, setColorID] = useState("");
+    const [tallaID, setTallaID] = useState("");
+    const [telaID, setTelaID] = useState("");
     const [traePrenda, setTraePrenda] = useState(false);
     const [prendaDescripcion, setPrendaDescripcion] = useState("");
 
-    const [disenos, setDisenos]                           = useState([]);
-    const [tecnicaID, setTecnicaID]                       = useState("");
-    const [parteID, setParteID]                           = useState("");
-    const [subparteDescripcion, setSubparteDescripcion]   = useState("");
-    const [archivoDiseno, setArchivoDiseno]               = useState(null);
-    const [observacionDiseno, setObservacionDiseno]       = useState("");
+    const [disenos, setDisenos] = useState([]);
+    const [tecnicaID, setTecnicaID] = useState("");
+    const [parteID, setParteID] = useState("");
+    const [subparteDescripcion, setSubparteDescripcion] = useState("");
+    const [archivoDiseno, setArchivoDiseno] = useState(null);
+    const [observacionDiseno, setObservacionDiseno] = useState("");
 
-    const [cargando, setCargando]               = useState(false);
+    const [cargando, setCargando] = useState(false);
     const [cargandoVariantes, setCargandoVariantes] = useState(false);
-    const [validacionStock, setValidacionStock]     = useState({ valido: false, mensaje: "", cargando: false });
-    const [submitting, setSubmitting]           = useState(false);
+    const [validacionStock, setValidacionStock] = useState({ valido: false, mensaje: "", cargando: false });
+    const [submitting, setSubmitting] = useState(false);
 
     useEffect(() => { cargarCatalogos(); }, []);
 
@@ -428,11 +428,11 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
             const precioBase = parseFloat(productoSeleccionado.PrecioBase) || 0;
             return { precioBase, precioTalla: 0, precioTela: 0, precioUnitario: precioBase, subtotal: precioBase * cantNum, cantidad: cantNum };
         }
-        const precioBase  = parseFloat(productoSeleccionado.PrecioBase) || 0;
-        const talla       = tallas.find(t => t.TallaID === parseInt(tallaID));
-        const tela        = telas.find(t => t.InsumoID === parseInt(telaID));
+        const precioBase = parseFloat(productoSeleccionado.PrecioBase) || 0;
+        const talla = tallas.find(t => t.TallaID === parseInt(tallaID));
+        const tela = telas.find(t => t.InsumoID === parseInt(telaID));
         const precioTalla = talla ? (parseFloat(talla.Precio) || 0) : 0;
-        const precioTela  = tela  ? (parseFloat(tela.PrecioTela) || 0) : 0;
+        const precioTela = tela ? (parseFloat(tela.PrecioTela) || 0) : 0;
         const precioUnitario = precioBase + precioTalla + precioTela;
         return { precioBase, precioTalla, precioTela, precioUnitario, subtotal: precioUnitario * cantNum, cantidad: cantNum };
     };
@@ -455,7 +455,7 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
 
     const validarDiseno = () => {
         if (!tecnicaID) { Swal.fire("Atención", "Selecciona una técnica", "warning"); return false; }
-        if (!parteID)   { Swal.fire("Atención", "Selecciona una parte de la prenda", "warning"); return false; }
+        if (!parteID) { Swal.fire("Atención", "Selecciona una parte de la prenda", "warning"); return false; }
         if (!archivoDiseno) { Swal.fire("Atención", "Debes subir un archivo de diseño", "warning"); return false; }
         const tiposPermitidos = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
         if (!tiposPermitidos.includes(archivoDiseno.type)) { Swal.fire("Atención", "El archivo debe ser una imagen válida", "warning"); return false; }
@@ -466,11 +466,11 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
     const handleAgregarDiseno = () => {
         if (!validarDiseno()) return;
         const tecnica = tecnicas.find(t => t.TecnicaID === parseInt(tecnicaID));
-        const parte   = partes.find(p => p.ParteID === parseInt(parteID));
+        const parte = partes.find(p => p.ParteID === parseInt(parteID));
         setDisenos([...disenos, {
             id: Date.now(),
             TecnicaID: parseInt(tecnicaID), TecnicaNombre: tecnica?.Nombre,
-            ParteID:   parseInt(parteID),   ParteNombre:   parte?.Nombre,
+            ParteID: parseInt(parteID), ParteNombre: parte?.Nombre,
             SubparteDescripcion: subparteDescripcion, Archivo: archivoDiseno,
             ImagenNombre: archivoDiseno?.name || "Sin archivo", Observaciones: observacionDiseno
         }]);
@@ -506,11 +506,11 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
                 ProductoID: productoSeleccionado.ProductoID, ProductoNombre: productoSeleccionado.Nombre,
                 ProductoImagen: productoSeleccionado.ImagenProducto, Cantidad: parseInt(cantidad),
                 TraePrenda: traePrenda, PrendaDescripcion: traePrenda ? prendaDescripcion : "", EsPersonalizado: false,
-                ColorID:   !traePrenda ? parseInt(colorID) : null,
+                ColorID: !traePrenda ? parseInt(colorID) : null,
                 ColorNombre: !traePrenda ? colores.find(c => c.ColorID === parseInt(colorID))?.Nombre : null,
-                TallaID:   !traePrenda ? parseInt(tallaID) : null,
+                TallaID: !traePrenda ? parseInt(tallaID) : null,
                 TallaNombre: !traePrenda ? tallas.find(t => t.TallaID === parseInt(tallaID))?.Nombre : null,
-                TelaID:    !traePrenda ? parseInt(telaID) : null,
+                TelaID: !traePrenda ? parseInt(telaID) : null,
                 TelaNombre: !traePrenda ? telas.find(t => t.InsumoID === parseInt(telaID))?.Nombre : null,
                 ...precios, disenos: [...disenos]
             };
@@ -564,7 +564,7 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
     };
 
     const handleEliminarProductoCarrito = (index) => {
-        Swal.fire({ title: "¿Eliminar producto?", text: "Se quitará del carrito", icon: "warning", showCancelButton: true, confirmButtonColor: C.danger, cancelButtonColor: C.navy, confirmButtonText: "Sí, eliminar", cancelButtonText: "Cancelar" })
+        swalEncima({ title: "¿Eliminar producto?", text: "Se quitará del carrito", icon: "warning", showCancelButton: true, confirmButtonColor: C.danger, cancelButtonColor: C.navy, confirmButtonText: "Sí, eliminar", cancelButtonText: "Cancelar" })
             .then(result => { if (result.isConfirmed) setCarritoProductos(carritoProductos.filter((_, i) => i !== index)); });
     };
 
@@ -631,9 +631,9 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
                 return {
                     ProductoID: prod.ProductoID, Cantidad: prod.Cantidad,
                     TraePrenda: prod.TraePrenda, PrendaDescripcion: prod.PrendaDescripcion || "",
-                    tallas:  !prod.TraePrenda && prod.TallaID ? [{ TallaID: prod.TallaID, Cantidad: prod.Cantidad, PrecioTalla: prod.precioTalla }] : [],
+                    tallas: !prod.TraePrenda && prod.TallaID ? [{ TallaID: prod.TallaID, Cantidad: prod.Cantidad, PrecioTalla: prod.precioTalla }] : [],
                     colores: !prod.TraePrenda && prod.ColorID ? [{ ColorID: prod.ColorID, Cantidad: prod.Cantidad }] : [],
-                    insumos: !prod.TraePrenda && prod.TelaID  ? [{ InsumoID: prod.TelaID,  CantidadRequerida: prod.Cantidad }] : [],
+                    insumos: !prod.TraePrenda && prod.TelaID ? [{ InsumoID: prod.TelaID, CantidadRequerida: prod.Cantidad }] : [],
                     tecnicas: prod.disenos?.map(dis => ({
                         TecnicaID: dis.TecnicaID, ParteID: dis.ParteID,
                         ImagenDiseño: dis.ImagenSubida,
