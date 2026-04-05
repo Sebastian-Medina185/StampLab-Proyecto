@@ -37,7 +37,7 @@ const C = {
 };
 
 // ── APIs ──
-const API_BASE_URL = '${import.meta.env.VITE_API_URL}/api';
+const API_BASE_URL = `${import.meta.env.VITE_API_URL}/api`;
 const api = {
     getProductos: async () => { const r = await fetch(`${API_BASE_URL}/productos`); const d = await r.json(); return d.datos || d; },
     getTecnicas: async () => { const r = await fetch(`${API_BASE_URL}/tecnicas`); const d = await r.json(); return d.datos || d; },
@@ -483,7 +483,7 @@ const CotizacionLanding = () => {
                     if (!dis.ImagenDiseno) return dis;
                     try {
                         const fd = new FormData(); fd.append('imagen', dis.ImagenDiseno);
-                        const r = await fetch('${import.meta.env.VITE_API_URL}/api/cotizaciones/upload-diseno', { method: 'POST', body: fd });
+                        const r = await fetch(`${import.meta.env.VITE_API_URL}/api/cotizaciones/upload-diseno`, { method: 'POST', body: fd });
                         const d = await r.json();
                         return { ...dis, ImagenNombre: d.filename };
                     } catch { return dis; }
