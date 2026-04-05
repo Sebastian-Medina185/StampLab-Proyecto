@@ -68,7 +68,7 @@ export const updateCotizacion = async (cotizacionID, data) => {
 
 
 export const createCotizacionInteligente = async (data) => {
-    const response = await fetch('http://localhost:3000/api/cotizaciones/inteligente', {
+    const response = await fetch('${import.meta.env.VITE_API_URL}/api/cotizaciones/inteligente', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

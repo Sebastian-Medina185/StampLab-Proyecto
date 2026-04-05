@@ -221,7 +221,7 @@ const MisCompras = () => {
 
     const verDetalle = async (ventaID) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/ventas/${ventaID}`);
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/ventas/${ventaID}`);
             const data = await response.json();
             setVentaSeleccionada(data);
         } catch (error) {

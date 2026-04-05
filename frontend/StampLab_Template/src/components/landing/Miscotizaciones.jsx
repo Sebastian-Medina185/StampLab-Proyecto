@@ -366,7 +366,7 @@ const MisCotizaciones = () => {
 
     const cargarCotizaciones = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/cotizaciones/usuario/${documentoID}`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/cotizaciones/usuario/${documentoID}`);
             const data = await res.json();
             setCotizaciones(Array.isArray(data) ? data : []);
         } catch { setCotizaciones([]); }
@@ -375,7 +375,7 @@ const MisCotizaciones = () => {
 
     const verDetalle = async (id) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/cotizaciones/${id}`);
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/cotizaciones/${id}`);
             const data = await res.json();
             setCotizacionSeleccionada(data);
             setMostrarDetalle(true);

@@ -7,7 +7,7 @@ import { FaFilePdf, FaChartBar, FaSyncAlt, FaBoxOpen, FaCubes } from "react-icon
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
-const API_BASE = "http://localhost:3000/api";
+const API_BASE = "${import.meta.env.VITE_API_URL}/api";
 
 const MESES = [
     { valor: "1",  nombre: "Enero" },

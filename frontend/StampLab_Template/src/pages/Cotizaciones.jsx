@@ -249,7 +249,7 @@ const ModalDetalleCotizacion = ({ cotizacion, onClose, onActualizar, onConvertir
 
     try {
       await axios.put(
-        `http://localhost:3000/api/cotizaciontecnicas/${tecnicaID}`,
+        `${import.meta.env.VITE_API_URL}/api/cotizaciontecnicas/${tecnicaID}`,
         { CostoTecnica: costoFinal }
       );
       Swal.fire({
@@ -274,7 +274,7 @@ const ModalDetalleCotizacion = ({ cotizacion, onClose, onActualizar, onConvertir
       return;
     }
     try {
-      const url = `http://localhost:3000/api/cotizaciones/${cotizacion.CotizacionID}/pdf`;
+      const url = `${import.meta.env.VITE_API_URL}/api/cotizaciones/${cotizacion.CotizacionID}/pdf`;
       const response = await axios.get(url, { responseType: 'blob' });
       const blob = new Blob([response.data], { type: 'application/pdf' });
       const link = document.createElement('a');
@@ -573,7 +573,7 @@ const Cotizaciones = () => {
     });
     if (result.isConfirmed) {
       try {
-        const response = await axios.post(`http://localhost:3000/api/cotizaciones/${cotizacionID}/convertir-a-venta`);
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/cotizaciones/${cotizacionID}/convertir-a-venta`);
         Swal.fire({ icon: 'success', title: '¡Conversión exitosa!', text: `Venta ID: #${response.data.venta.VentaID}`, timer: 2500, showConfirmButton: false });
         cargarCotizaciones();
       } catch (error) {

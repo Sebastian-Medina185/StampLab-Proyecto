@@ -54,7 +54,7 @@ const Servicios = () => {
         try {
             setLoading(true);
             setError(null);
-            const response = await fetch('http://localhost:3000/api/tecnicas');
+            const response = await fetch('${import.meta.env.VITE_API_URL}/api/tecnicas');
             if (!response.ok) throw new Error('Error al cargar las técnicas');
             const data = await response.json();
             setTecnicas(data.datos || data || []);

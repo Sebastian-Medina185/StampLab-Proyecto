@@ -603,7 +603,7 @@ const FormularioCotizacion = ({ onClose, onActualizar }) => {
                             try {
                                 const formData = new FormData();
                                 formData.append('imagen', dis.Archivo);
-                                const res = await fetch('http://localhost:3000/api/cotizaciones/upload-diseno', { method: 'POST', body: formData });
+                                const res = await fetch('${import.meta.env.VITE_API_URL}/api/cotizaciones/upload-diseno', { method: 'POST', body: formData });
                                 if (!res.ok) throw new Error('Upload falló');
                                 const data = await res.json();
                                 return { ...dis, ImagenSubida: data.filename };

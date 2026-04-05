@@ -181,7 +181,7 @@ export default function NuevaVenta({ onClose, ventaEdit }) {
         try {
             const token = localStorage.getItem("token");
             const res = await axios.get(
-                `http://localhost:3000/api/inventarioproducto/producto/${producto.ProductoID}`,
+                `${import.meta.env.VITE_API_URL}/api/inventarioproducto/producto/${producto.ProductoID}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             const variantesResp = res.data.datos || res.data || [];
@@ -355,7 +355,7 @@ export default function NuevaVenta({ onClose, ventaEdit }) {
         try {
             const token = localStorage.getItem("token");
             if (modoEdicion) {
-                await axios.put(`http://localhost:3000/api/ventas/${ventaEdit.VentaID}`, venta, {
+                await axios.put(`${import.meta.env.VITE_API_URL}/api/ventas/${ventaEdit.VentaID}`, venta, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 await Swal.fire({

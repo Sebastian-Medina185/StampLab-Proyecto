@@ -139,7 +139,7 @@ export const getProveedores = async () => {
 export const getVariantesByProductoEnCompra = async (productoId) => {
     try {
         // RUTA CORRECTA: usar el endpoint de inventario
-        const response = await axios.get(`http://localhost:3000/api/inventarioproducto/producto/${productoId}`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/inventarioproducto/producto/${productoId}`);
         
         console.log("Variantes obtenidas:", response.data);
         

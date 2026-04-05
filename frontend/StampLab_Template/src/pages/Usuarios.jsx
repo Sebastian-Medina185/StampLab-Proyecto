@@ -214,14 +214,14 @@ const Usuarios = () => {
   const handleEliminar = async (documentoID) => {
     try {
       setLoading(true);
-      const cotizacionesResponse = await fetch(`http://localhost:3000/api/cotizaciones/usuario/${documentoID}`);
+      const cotizacionesResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/cotizaciones/usuario/${documentoID}`);
       const cotizaciones = await cotizacionesResponse.json();
       const cotizacionesActivas = cotizaciones.filter(c => { const eID = c.EstadoID || c.estado?.EstadoID; return eID === 1 || eID === 2; });
       if (cotizacionesActivas.length > 0) {
         await Swal.fire({ icon: "warning", title: "No se puede eliminar", html: `Este usuario tiene <strong>${cotizacionesActivas.length} cotización(es) activa(s)</strong>.`, confirmButtonText: "Entendido", confirmButtonColor: C.warning });
         setLoading(false); return;
       }
-      const ventasResponse = await fetch(`http://localhost:3000/api/ventas?limit=1000&page=1`);
+      const ventasResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/ventas?limit=1000&page=1`);
       const ventasData = await ventasResponse.json();
       const todasLasVentas = ventasData.datos || [];  
       const ventasActivas = todasLasVentas.filter(v => v.DocumentoID === documentoID && v.EstadoID !== 11);
