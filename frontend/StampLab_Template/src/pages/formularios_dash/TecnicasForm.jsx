@@ -129,10 +129,11 @@ const TecnicasForm = ({ onClose, onSave, tecnicaEdit = null, tecnicasExistentes 
     return !nombreError && !descripcionError && !imagenError;
   };
 
-  const handleSubmit = (e) => {
+  // DESPUÉS
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    onSave({
+    const success = await onSave({
       Nombre: formData.nombre.trim(),
       Descripcion: formData.descripcion.trim(),
       imagenTecnica: formData.imagenTecnica.trim(),

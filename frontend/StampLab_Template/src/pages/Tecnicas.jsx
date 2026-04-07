@@ -136,6 +136,7 @@ const Tecnicas = () => {
     const handleEditar = (t) => { setTecnicaEdit(t); setShowForm(true); };
     const handleCloseForm = () => { setShowForm(false); setTecnicaEdit(null); };
 
+    // DESPUÉS
     const handleSave = async (tecnicaData) => {
         try {
             setLoading(true);
@@ -143,12 +144,32 @@ const Tecnicas = () => {
                 ? await updateTecnica(tecnicaEdit.TecnicaID, tecnicaData)
                 : await createTecnica(tecnicaData);
             if (response.estado) {
-                await loadTecnicas(); handleCloseForm();
-                Swal.fire({ toast: true, icon: "success", title: tecnicaEdit ? "Técnica actualizada" : "Técnica creada", position: "top-end", showConfirmButton: false, timer: 2500, timerProgressBar: true });
-            } else throw new Error(response.message || "Error desconocido");
+                await loadTecnicas();
+                handleCloseForm(); // ← se cierra SOLO si fue exitoso
+                Swal.fire({
+                    toast: true,
+                    icon: "success",
+                    title: tecnicaEdit ? "Técnica actualizada" : "Técnica creada",
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 2500,
+                    timerProgressBar: true,
+                });
+                return true; // ← indica éxito
+            } else {
+                throw new Error(response.message || "Error desconocido");
+            }
         } catch (err) {
-            Swal.fire({ icon: "error", title: "Error", text: err.response?.data?.message || err.message || "Error desconocido", confirmButtonColor: C.danger });
-        } finally { setLoading(false); }
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: err.response?.data?.message || err.message || "Error desconocido",
+                confirmButtonColor: C.danger,
+            });
+            return false; // ← indica fallo, el form NO se cierra
+        } finally {
+            setLoading(false);
+        }
     };
 
 

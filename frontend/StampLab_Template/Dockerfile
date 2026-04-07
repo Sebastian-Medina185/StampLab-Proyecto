@@ -1,4 +1,4 @@
-﻿FROM node:20-alpine AS builder
+﻿FROM node:25-alpine AS builder
 RUN apk upgrade --no-cache
 RUN npm install -g npm@latest
 WORKDIR /app
@@ -8,7 +8,7 @@ RUN npm audit fix --force
 COPY . .
 RUN npm run build
 
-FROM node:20-alpine
+FROM node:25-alpine
 RUN apk upgrade --no-cache
 RUN npm install -g npm@latest serve
 WORKDIR /app
